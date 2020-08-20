@@ -36,6 +36,7 @@ Click on the name of a module or role to view that content's documentation:
 
 - **Modules**:
     * [image_import](https://github.com/JM1/ansible-collection-openstack/blob/master/plugins/modules/image_import.py)
+    * [floating_ip](https://github.com/JM1/ansible-collection-openstack/blob/master/plugins/modules/floating_ip.py)
 - **Roles**:
     * [setup](https://github.com/JM1/ansible-collection-openstack/blob/master/roles/setup/README.md)
 

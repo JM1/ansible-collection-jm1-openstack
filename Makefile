@@ -11,7 +11,7 @@ CLTN_VERSION := $(call read_yaml_key,"galaxy.yml","version")
 CLTN_FILE := $(CLTN_NAMESPACE)-$(CLTN_NAME)-$(CLTN_VERSION).tar.gz
 CLTN_DIR := build
 # NOTE: Keep lists of modules and roles in sync with README.md
-CLTN_MODULES := image_import
+CLTN_MODULES := floating_ip image_import
 CLTN_ROLES := setup
 
 # Targets are sorted by name
