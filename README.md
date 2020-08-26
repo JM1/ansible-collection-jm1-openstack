@@ -5,7 +5,7 @@ This repo hosts the [`jm1.openstack`](https://galaxy.ansible.com/jm1/openstack) 
 The collection includes a variety of Ansible content to help automate the provisioning and maintenance of OpenStack clusters.
 
 It provides supplemental modules and roles to the [Openstack Ansible collection](https://galaxy.ansible.com/openstack/cloud),
-e.g. [`jm1.openstack.image_import`](https://github.com/JM1/ansible-collection-openstack/blob/master/plugins/modules/image_import.py)
+e.g. [`jm1.openstack.image_import`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/plugins/modules/image_import.py)
 resemble [`os_image`](https://docs.ansible.com/ansible/latest/modules/os_image_module.html) to upload images from remote
 uri's to the OpenStack Image Repository. For example:
 
@@ -35,17 +35,17 @@ uri's to the OpenStack Image Repository. For example:
 Click on the name of a module or role to view that content's documentation:
 
 - **Modules**:
-    * [image_import](https://github.com/JM1/ansible-collection-openstack/blob/master/plugins/modules/image_import.py)
-    * [floating_ip](https://github.com/JM1/ansible-collection-openstack/blob/master/plugins/modules/floating_ip.py)
+    * [image_import](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/plugins/modules/image_import.py)
+    * [floating_ip](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/plugins/modules/floating_ip.py)
 - **Roles**:
-    * [setup](https://github.com/JM1/ansible-collection-openstack/blob/master/roles/setup/README.md)
+    * [setup](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/roles/setup/README.md)
 
 ## Requirements and Installation
 
 ### Installing necessary software
 
 Content in this collection requires additional tools and libraries, e.g. to interact with OpenStack's APIs. You can use
-role [`jm1.openstack.setup`](https://github.com/JM1/ansible-collection-openstack/blob/master/roles/setup/README.md) to 
+role [`jm1.openstack.setup`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/roles/setup/README.md) to 
 install necessary software packages:
 
 ```yaml
@@ -142,7 +142,7 @@ Helpful tools for developing collections are `ansible`, `ansible-doc`, `ansible-
 | Red Hat Enterprise Linux (RHEL) 8 / CentOS 8 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible              ansible-doc python3-flake8 make yamllint` |
 | Ubuntu 20.04 LTS (Focal Fossa)               | `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 
-Have a look at the included [`Makefile`](https://github.com/JM1/ansible-collection-openstack/blob/master/Makefile) for
+Have a look at the included [`Makefile`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/Makefile) for
 several frequently used commands, to e.g. build and lint a collection.
 
 ## More Information
