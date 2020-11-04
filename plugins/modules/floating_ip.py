@@ -22,7 +22,7 @@ short_description: Allocate/Release floating IP from a OpenStack network
 
 description:
     - "This module allows one to allocate or release an floating ip to a OpenStack network. Returns the floating IP when
-       attaching only if I(wait=true). Unlike the official OpenStack Ansible module openstack.cloud.floating_ip, this
+       attaching only if I(wait=true). Unlike the official OpenStack Ansible module M(openstack.cloud.floating_ip), this
        module does allocate floating ips to networks, but does not assign floating ips to servers."
 
 requirements: []
