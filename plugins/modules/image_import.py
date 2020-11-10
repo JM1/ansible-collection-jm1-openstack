@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # vim:set fileformat=unix shiftwidth=4 softtabstop=4 expandtab:
-# kate: end-of-line unix; space-indent on; indent-width 4; remove-trailing-space on;
+# kate: end-of-line unix; space-indent on; indent-width 4; remove-trailing-spaces modified;
 
 # Copyright: (c) 2020, Jakob Meng <jakobmeng@web.de>
 # Based on openstack.cloud.image module written by Hewlett-Packard Development Company, L.P. et al.

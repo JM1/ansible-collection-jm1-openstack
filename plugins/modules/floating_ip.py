@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # vim:set fileformat=unix shiftwidth=4 softtabstop=4 expandtab:
-# kate: end-of-line unix; space-indent on; indent-width 4; remove-trailing-space on;
+# kate: end-of-line unix; space-indent on; indent-width 4; remove-trailing-spaces modified;
 
 # Copyright: (c) 2020, Jakob Meng <jakobmeng@web.de>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
