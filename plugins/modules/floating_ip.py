@@ -32,7 +32,6 @@ options:
         description:
             - "An floating IP address to allocate or to release. Required only if I(state) is absent. When I(state) is
                C(present) can be used to specify a IP address."
-          to attach.
         required: false
         type: str
     floating_network_name:
