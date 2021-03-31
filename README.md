@@ -64,6 +64,13 @@ install necessary software packages:
     - jm1.openstack.setup
 ```
 
+Or to install these packages locally:
+
+```sh
+sudo -s
+ansible localhost -m include_role -a name=jm1.openstack.setup
+```
+
 The exact requirements for every module and role are listed in the corresponding documentation.
 See the module documentations for the minimal version supported for each module.
 
@@ -148,8 +155,10 @@ Helpful tools for developing collections are `ansible`, `ansible-doc`, `ansible-
 | OS                                           | Install Instructions                                                |
 | -------------------------------------------- | ------------------------------------------------------------------- |
 | Debian 10 (Buster)                           | Enable [Backports](https://backports.debian.org/Instructions/). `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
+| Debian 11 (Bullseye)                         | `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 | Red Hat Enterprise Linux (RHEL) 7 / CentOS 7 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible ansible-lint ansible-doc  python-flake8 make yamllint` |
 | Red Hat Enterprise Linux (RHEL) 8 / CentOS 8 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible              ansible-doc python3-flake8 make yamllint` |
+| Ubuntu 18.04 LTS (Bionic Beaver)             | Enable [Launchpad PPA Ansible by Ansible, Inc.](https://launchpad.net/~ansible/+archive/ubuntu/ansible). `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 | Ubuntu 20.04 LTS (Focal Fossa)               | `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 
 Have a look at the included [`Makefile`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/Makefile) for
