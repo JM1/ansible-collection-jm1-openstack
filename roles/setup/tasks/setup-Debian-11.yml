@@ -1,0 +1,12 @@
+---
+# NOTE: Synchronize changes with README.md
+
+# Tasks for Debian and Ubuntu have been unified in a single file because of similarities between both distributions.
+
+- name: Satisfy requirements for collection jm1.openstack on Debian 11 (Bullseye) and Ubuntu 20.04 LTS (Focal Fossa)
+  jm1.pkg.meta_pkg:
+    name: "jm1-openstack-setup"
+    version: "2"
+    depends:
+    - jm1-pkg-setup
+    - python3-openstacksdk

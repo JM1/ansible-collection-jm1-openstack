@@ -1,0 +1,41 @@
+---
+# NOTE: Synchronize changes with README.md
+
+# Tasks for Debian and Ubuntu have been unified in a single file because of similarities between both distributions.
+
+# With OpenStack SDK 0.17.2 aka packages python-openstacksdk and python3-openstacksdk from Debian 10 (Buster) some
+# functionality of Ansible's OpenStack collection is not available. Newer Ansible releases do not support OpenStack
+# SDK 0.11.3 from Ubuntu 18.04 LTS (Bionic Beaver) at all. Both SDK releases are old and unsupported by upstream.
+# Instead a newer and still maintained release of openstacksdk is installed from PyPI.
+
+- name: Satisfy requirements for collection jm1.openstack on Debian 10 (Buster) and Ubuntu 18.04 LTS (Bionic Beaver)
+  jm1.pkg.meta_pkg:
+    name: "jm1-openstack-setup"
+    version: "2"
+    depends:
+    - jm1-pkg-setup
+    - python-backports.tempfile
+
+- name: Upgrade pip from PyPI as that is the single most common cause of installation problems
+  # Python module openstacksdk depends on Python module cryptography which fails to build with older pip versions.
+  # Ref.: https://cryptography.io/en/latest/installation.html
+  pip:
+    name: pip
+    executable: '{{ item }}'
+    extra_args: --upgrade
+  # Install packages for Python 2 and 3, because Ansible might be executed with both interpreters
+  loop:
+  - pip2
+  - pip3
+
+- name: Satisfy requirements for collection jm1.openstack from PyPI
+  pip:
+    name:
+    # Upgrade Python module openstacksdk for OpenStack Ussuri release
+    # NOTE: Version 0.45.0 is the latest version released for Python 2
+    - openstacksdk==0.45.0
+    executable: '{{ item }}'
+  # Install packages for Python 2 and 3, because Ansible might be executed with both interpreters
+  loop:
+  - pip2
+  - pip3
