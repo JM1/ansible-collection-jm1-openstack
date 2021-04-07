@@ -66,11 +66,14 @@
 - name: Satisfy requirements for collection jm1.openstack from PyPI
   pip:
     name:
-    # Upgrade Python module openstacksdk for OpenStack Ussuri release
-    # NOTE: Version 0.45.0 is the latest version released for Python 2
-    - openstacksdk==0.45.0
+    # Upgrade Python module openstacksdk for OpenStack Train release
+    # NOTE: OpenStack SDK 0.45.0 from OpenStack Ussuri is the latest release for Python 2, but it cannot be imported.
+    #       To workaround this issue, we install OpenStack SDK 0.36.5 (and compatible OpenStackClient 4.0.2) instead.
+    #       Ref.: https://ask.openstack.org/en/question/128326/
+    #
+    - openstacksdk~=0.36.5
     # Newer OpenStack SDK releases require an upgrade of OpenStackClient
-    - python-openstackclient~=5.2.1
+    - python-openstackclient~=4.0.2
     executable: '{{ item }}'
   # Install packages for Python 2 and 3, because Ansible might be executed with both interpreters
   loop:
