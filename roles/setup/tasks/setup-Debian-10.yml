@@ -3,11 +3,6 @@
 
 # Tasks for Debian and Ubuntu have been unified in a single file because of similarities between both distributions.
 
-# With OpenStack SDK 0.17.2 aka packages python-openstacksdk and python3-openstacksdk from Debian 10 (Buster) some
-# functionality of Ansible's OpenStack collection is not available. Newer Ansible releases do not support OpenStack
-# SDK 0.11.3 from Ubuntu 18.04 LTS (Bionic Beaver) at all. Both SDK releases are old and unsupported by upstream.
-# Instead a newer and still maintained release of openstacksdk is installed from PyPI.
-
 - name: Satisfy requirements for collection jm1.openstack on Debian 10 (Buster) and Ubuntu 18.04 LTS (Bionic Beaver)
   jm1.pkg.meta_pkg:
     name: "jm1-openstack-setup"
@@ -28,12 +23,54 @@
   - pip2
   - pip3
 
+# An upgrade of Python package python-openstackclient requires an upgrade of PyYAML as well. During upgrade of PyYAML
+# pip will try to uninstall previously installed releases of PyYAML which fails on Debian 10 (Buster) and Ubuntu 18.04 
+# LTS (Bionic Beaver) with error message:
+#
+#    Attempting uninstall: PyYAML
+#      Found existing installation: PyYAML 3.12
+#  ERROR: Cannot uninstall 'PyYAML'. It is a distutils installed project and thus we cannot accurately determine which 
+#  files belong to it which would lead to only a partial uninstall.
+#
+# To workaround this uninstall issue, we will ask pip to ignore any installed Python packages when upgrading PyYAML, so
+# pip won't try to uninstalled any existing packages.
+#
+- name: Get installed Python packages
+  pip_package_info:
+    clients:
+    # Get packages for Python 2 and 3, because Ansible might be executed with both interpreters
+    - pip2
+    - pip3
+  register: pip_package_info_result
+#
+- name: Assert that only one version of PyYAML is installed per pip client
+  loop: '{{ pip_package_info_result.packages|dict2items }}'
+  when: "'PyYAML' in item.value and item.value.PyYAML|length > 1"
+  fail:
+    msg: "Multiple versions of PyYAML found: {{ item.value.PyYAML }}"
+#
+- name: Install Python package PyYAML or upgrade it if installed version is outdated
+  loop: '{{ pip_package_info_result.packages|dict2items }}'
+  when: "'PyYAML' not in item.value or item.value.PyYAML[0].version is version('3.13', '<=', strict=True)"
+  pip:
+    name: pyyaml>3.13.0
+    executable: '{{ item.key }}'
+    state: forcereinstall
+    extra_args: --ignore-installed
+
+# With OpenStack SDK 0.17.2 aka packages python-openstacksdk and python3-openstacksdk from Debian 10 (Buster) some
+# functionality of Ansible's OpenStack collection is not available. Newer Ansible releases do not support OpenStack
+# SDK 0.11.3 from Ubuntu 18.04 LTS (Bionic Beaver) at all. Both SDK releases are old and unsupported by upstream.
+# Instead a newer and still maintained release of openstacksdk is installed from PyPI.
+#
 - name: Satisfy requirements for collection jm1.openstack from PyPI
   pip:
     name:
     # Upgrade Python module openstacksdk for OpenStack Ussuri release
     # NOTE: Version 0.45.0 is the latest version released for Python 2
     - openstacksdk==0.45.0
+    # Newer OpenStack SDK releases require an upgrade of OpenStackClient
+    - python-openstackclient~=5.2.1
     executable: '{{ item }}'
   # Install packages for Python 2 and 3, because Ansible might be executed with both interpreters
   loop:
