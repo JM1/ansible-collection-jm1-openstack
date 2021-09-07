@@ -12,6 +12,6 @@
 - name: Load tasks specific to OS
   include_tasks: "setup-{{ distribution_id|join('-') }}.yml"
   when: (distribution_id in [
-            ['Debian', '10'], ['Debian', '11'], ['Debian', 'NA'], ['Debian', 'Testing'], ['Debian', 'Unstable'],
-            ['Ubuntu','18.04'], ['Ubuntu','20.04']
+            ['Debian', '10'], ['Debian', '11'], ['Debian', '12'], ['Debian', 'NA'], ['Debian', 'Testing'],
+            ['Debian', 'Unstable'], ['Ubuntu','18.04'], ['Ubuntu','20.04']
         ])
