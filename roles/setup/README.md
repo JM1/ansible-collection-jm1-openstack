@@ -1,4 +1,4 @@
-# Ansible Role: jm1.openstack.setup
+# Ansible Role `jm1.openstack.setup`
 
 This role helps to install necessary tools and libraries for all roles and modules in collection
 [jm1.openstack](https://galaxy.ansible.com/jm1/openstack).
@@ -10,6 +10,7 @@ using the provided [`requirements.yml`](https://github.com/JM1/ansible-collectio
 
 **Tested OS images**
 - Cloud image of [`Debian 10 (Buster)` \[`amd64`\]](https://cdimage.debian.org/cdimage/openstack/current/)
+- Cloud image of [`Debian 11 (Bullseye)` \[`amd64`\]](https://cdimage.debian.org/images/cloud/bullseye/latest/)
 - Ubuntu cloud image of [`Ubuntu 20.04 LTS (Focal Fossa)` \[`amd64`\]](https://cloud-images.ubuntu.com/focal/)
 
 Available on Ansible Galaxy in Collection [jm1.openstack](https://galaxy.ansible.com/jm1/openstack).
@@ -47,7 +48,9 @@ For instructions on how to run Ansible playbooks have look at Ansible's
 
 ## License
 
-GPL3
+GNU General Public License v3.0 or later
+
+See [LICENSE.md](../../LICENSE.md) to see the full text.
 
 ## Author
 
