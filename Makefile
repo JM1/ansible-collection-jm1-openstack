@@ -12,7 +12,7 @@ CLTN_FILE := $(CLTN_NAMESPACE)-$(CLTN_NAME)-$(CLTN_VERSION).tar.gz
 CLTN_DIR := build
 # NOTE: Keep lists of modules and roles in sync with README.md
 CLTN_MODULES := floating_ip image_import
-CLTN_ROLES := setup
+CLTN_ROLES := $(shell cd roles && ls -1)
 
 # Targets are sorted by name
 
