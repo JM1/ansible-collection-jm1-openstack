@@ -8,5 +8,7 @@
     name: jm1.pkg.setup # If Ansible raises "ERROR! the role 'jm1.pkg.setup' was not found" then you might use the
                         # ansible-galaxy and the provided requirements.yml to install all missing role dependencies.
 
+# TODO: Add tasks for CentOS and Red Hat Enterprise Linux
+
 - name: Load tasks specific to OS (fails if OS is unsupported)
   include_tasks: "setup-{{ distribution_id|join('-') }}.yml"
