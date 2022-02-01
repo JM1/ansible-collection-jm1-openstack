@@ -3,3 +3,4 @@ roles: []
 
 collections:
 - jm1.pkg
+- openstack.cloud
