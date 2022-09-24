@@ -16,7 +16,7 @@
 - name: Upgrade pip from PyPI as that is the single most common cause of installation problems
   # Python module openstacksdk depends on Python module cryptography which fails to build with older pip versions.
   # Ref.: https://cryptography.io/en/latest/installation.html
-  pip:
+  ansible.builtin.pip:
     name: pip
     executable: '{{ item }}'
     extra_args: --upgrade
@@ -38,7 +38,7 @@
 # pip won't try to uninstalled any existing packages.
 #
 - name: Get installed Python packages
-  pip_package_info:
+  community.general.pip_package_info:
     clients:
     # Get packages for Python 2 and 3, because Ansible might be executed with both interpreters
     - pip2
@@ -48,13 +48,13 @@
 - name: Assert that only one version of PyYAML is installed per pip client
   loop: '{{ pip_package_info_result.packages|dict2items }}'
   when: "'PyYAML' in item.value and item.value.PyYAML|length > 1"
-  fail:
+  ansible.builtin.fail:
     msg: "Multiple versions of PyYAML found: {{ item.value.PyYAML }}"
 #
 - name: Install Python package PyYAML or upgrade it if installed version is outdated
   loop: '{{ pip_package_info_result.packages|dict2items }}'
   when: "'PyYAML' not in item.value or item.value.PyYAML[0].version is version('3.13', '<=', strict=True)"
-  pip:
+  ansible.builtin.pip:
     name: pyyaml>3.13.0
     executable: '{{ item.key }}'
     state: forcereinstall
@@ -66,7 +66,7 @@
 # Instead a newer and still maintained release of openstacksdk is installed from PyPI.
 #
 - name: Satisfy requirements for collection jm1.openstack from PyPI
-  pip:
+  ansible.builtin.pip:
     name:
     # Upgrade Python module openstacksdk for OpenStack Train release
     # NOTE: OpenStack SDK 0.45.0 from OpenStack Ussuri is the latest release for Python 2, but it cannot be imported.
