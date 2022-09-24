@@ -166,6 +166,7 @@ Helpful tools for developing collections are `ansible`, `ansible-doc`, `ansible-
 | Red Hat Enterprise Linux (RHEL) 9 / CentOS 9 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible              ansible-doc python3-flake8 make yamllint` |
 | Ubuntu 18.04 LTS (Bionic Beaver)             | Enable [Launchpad PPA Ansible by Ansible, Inc.](https://launchpad.net/~ansible/+archive/ubuntu/ansible). `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 | Ubuntu 20.04 LTS (Focal Fossa)               | `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
+| Ubuntu 22.04 LTS (Jammy Jellyfish)           | `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 
 Have a look at the included [`Makefile`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/Makefile) for
 several frequently used commands, to e.g. build and lint a collection.
