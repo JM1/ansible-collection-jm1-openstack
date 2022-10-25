@@ -49,13 +49,13 @@
     register: pip_package_info_result
   #
   - name: Assert that only one version of PyYAML is installed per pip client
-    loop: '{{ pip_package_info_result.packages|dict2items }}'
-    when: "'PyYAML' in item.value and item.value.PyYAML|length > 1"
+    loop: '{{ pip_package_info_result.packages | dict2items }}'
+    when: "'PyYAML' in item.value and item.value.PyYAML | length > 1"
     ansible.builtin.fail:
       msg: "Multiple versions of PyYAML found: {{ item.value.PyYAML }}"
   #
   - name: Install Python package PyYAML or upgrade it if installed version is outdated
-    loop: '{{ pip_package_info_result.packages|dict2items }}'
+    loop: '{{ pip_package_info_result.packages | dict2items }}'
     when: "'PyYAML' not in item.value or item.value.PyYAML[0].version is version('3.13', '<=', strict=True)"
     ansible.builtin.pip:
       name: pyyaml>3.13.0
@@ -88,15 +88,13 @@
 - name: >-
     Satisfy requirements for collection jm1.pkg on Ubuntu 20.04 LTS (Focal Fossa), Ubuntu 22.04 LTS (Jammy Jellyfish),
     Debian 11 (Bullseye), Debian 12 (Bookworm) and Debian NA (Testing, Unstable aka Sid, Experimental)
-  when: distribution_id in [
-            ['Debian', '11'],
-            ['Debian', '12'],
-            ['Debian', 'NA'],
-            ['Debian', 'Testing'],
-            ['Debian', 'Unstable'],
-            ['Ubuntu', '20.04'],
-            ['Ubuntu', '22.04']
-        ]
+  when: distribution_id in [['Debian', '11'],
+                            ['Debian', '12'],
+                            ['Debian', 'NA'],
+                            ['Debian', 'Testing'],
+                            ['Debian', 'Unstable'],
+                            ['Ubuntu', '20.04'],
+                            ['Ubuntu', '22.04']]
   block:
   - name: Install package dependencies
     jm1.pkg.meta_pkg:
