@@ -1,13 +1,15 @@
 # Ansible Collection for using OpenStack
 
-This repo hosts the [`jm1.openstack`](https://galaxy.ansible.com/jm1/openstack) Ansible Collection.
+This repo hosts the Ansible collection [`jm1.openstack`](https://galaxy.ansible.com/jm1/openstack).
 
 The collection includes a variety of Ansible content to help automate the provisioning and maintenance of OpenStack clusters.
 
-It provides supplemental modules and roles to the [Openstack Ansible collection](https://galaxy.ansible.com/openstack/cloud),
-e.g. [`jm1.openstack.image_import`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/plugins/modules/image_import.py)
-resemble [`os_image`](https://docs.ansible.com/ansible/latest/modules/os_image_module.html) to upload images from remote
-uri's to the OpenStack Image Repository. For example:
+It provides supplemental modules and roles to the [Ansible OpenStack collection][openstack-cloud]. For example,
+[`jm1.openstack.image_import`](plugins/modules/image_import.py) resembles [`openstack.cloud.image`][
+openstack-cloud-image] to upload images from remote uri's to the OpenStack Image Repository:
+
+[openstack-cloud]: https://galaxy.ansible.com/openstack/cloud
+[openstack-cloud-image]: https://docs.ansible.com/ansible/latest/collections/openstack/cloud/image_module.html
 
 ```yaml
 - hosts: all
@@ -35,10 +37,10 @@ uri's to the OpenStack Image Repository. For example:
 Click on the name of a module or role to view that content's documentation:
 
 - **Modules**:
-    * [image_import](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/plugins/modules/image_import.py)
-    * [floating_ip](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/plugins/modules/floating_ip.py)
+    * [image_import](plugins/modules/image_import.py)
+    * [floating_ip](plugins/modules/floating_ip.py)
 - **Roles**:
-    * [setup](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/roles/setup/README.md)
+    * [setup](roles/setup/README.md)
 
 ## Requirements and Installation
 
@@ -55,8 +57,7 @@ make install-requirements
 ```
 
 Content in this collection requires additional tools and libraries, e.g. to interact with OpenStack's APIs. You can use
-role [`jm1.openstack.setup`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/roles/setup/README.md) to 
-install necessary software packages:
+role [`jm1.openstack.setup`](roles/setup/README.md) to install necessary software packages:
 
 ```yaml
 - hosts: all
@@ -162,13 +163,13 @@ Helpful tools for developing collections are `ansible`, `ansible-doc`, `ansible-
 | Debian 11 (Bullseye)                         | `apt install ansible ansible-lint flake8 make yamllint` |
 | Debian 12 (Bookworm)                         | `apt install ansible ansible-lint flake8 make yamllint` |
 | Red Hat Enterprise Linux (RHEL) 7 / CentOS 7 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible ansible-lint ansible-doc  python-flake8 make yamllint` |
-| Red Hat Enterprise Linux (RHEL) 8 / CentOS 8 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible                           python3-flake8 make yamllint` |
-| Red Hat Enterprise Linux (RHEL) 9 / CentOS 9 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible                           python3-flake8 make yamllint` |
+| Red Hat Enterprise Linux (RHEL) 8 / CentOS 8 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible                          python3-flake8 make yamllint` |
+| Red Hat Enterprise Linux (RHEL) 9 / CentOS 9 | Enable [EPEL](https://fedoraproject.org/wiki/EPEL). `yum install ansible                          python3-flake8 make yamllint` |
 | Ubuntu 18.04 LTS (Bionic Beaver)             | Enable [Launchpad PPA Ansible by Ansible, Inc.](https://launchpad.net/~ansible/+archive/ubuntu/ansible). `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 | Ubuntu 20.04 LTS (Focal Fossa)               | `apt install ansible ansible-doc ansible-lint flake8 make yamllint` |
 | Ubuntu 22.04 LTS (Jammy Jellyfish)           | `apt install ansible             ansible-lint flake8 make yamllint` |
 
-Have a look at the included [`Makefile`](https://github.com/JM1/ansible-collection-jm1-openstack/blob/master/Makefile) for
+Have a look at the included [`Makefile`](Makefile) for
 several frequently used commands, to e.g. build and lint a collection.
 
 ## More Information
