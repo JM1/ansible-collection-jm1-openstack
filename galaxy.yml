@@ -2,6 +2,7 @@
 authors:
   - Jakob Meng (https://github.com/jm1)
 dependencies:
+  "jm1.ansible": '>=2022.10.23'
   "jm1.pkg": '>=2022.9.25'
   "openstack.cloud": '>=1.9.1,<2.0.0'
 description: null

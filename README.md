@@ -40,6 +40,7 @@ Click on the name of a module or role to view that content's documentation:
     * [image_import](plugins/modules/image_import.py)
     * [floating_ip](plugins/modules/floating_ip.py)
 - **Roles**:
+    * [cloud](roles/cloud/README.md)
     * [setup](roles/setup/README.md)
 
 ## Requirements and Installation

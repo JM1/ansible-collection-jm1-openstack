@@ -2,6 +2,4 @@
 roles: []
 
 collections:
-- jm1.ansible
-- jm1.pkg
 - openstack.cloud
