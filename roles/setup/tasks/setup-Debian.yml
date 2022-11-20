@@ -63,6 +63,19 @@
       state: forcereinstall
       extra_args: --ignore-installed
 
+  - name: Install Python package setuptools which is compatible to openstacksdk and python-openstackclient from Train
+    ansible.builtin.pip:
+      name: setuptools
+      state: forcereinstall
+      executable: '{{ item }}'
+      extra_args: >-
+        --ignore-installed
+        --constraint https://opendev.org/openstack/requirements/raw/branch/stable/train/upper-constraints.txt
+    # Install packages for Python 2 and 3, because Ansible might be executed with both interpreters
+    loop:
+    - pip2
+    - pip3
+
   # With OpenStack SDK 0.17.2 aka packages python-openstacksdk and python3-openstacksdk from Debian 10 (Buster) some
   # functionality of Ansible's OpenStack collection is not available. Newer Ansible releases do not support OpenStack
   # SDK 0.11.3 from Ubuntu 18.04 LTS (Bionic Beaver) at all. Both SDK releases are old and unsupported by upstream.
@@ -76,10 +89,12 @@
       #       To workaround this issue, we install OpenStack SDK 0.36.5 (and compatible OpenStackClient 4.0.2) instead.
       #       Ref.: https://ask.openstack.org/en/question/128326/
       #
-      - openstacksdk~=0.36.5
+      - openstacksdk
       # Newer OpenStack SDK releases require an upgrade of OpenStackClient
-      - python-openstackclient~=4.0.2
+      - python-openstackclient
       executable: '{{ item }}'
+      extra_args: >-
+        --constraint https://opendev.org/openstack/requirements/raw/branch/stable/train/upper-constraints.txt
     # Install packages for Python 2 and 3, because Ansible might be executed with both interpreters
     loop:
     - pip2
