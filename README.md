@@ -100,7 +100,7 @@ collections:
 
 ## Usage and Playbooks
 
-You can either call modules by their Fully Qualified Collection Namespace (FQCN), like `jm1.openstack.volume_import`, or you
+You can either call modules by their Fully Qualified Collection Name (FQCN), like `jm1.openstack.volume_import`, or you
 can call modules by their short name if you list the `jm1.openstack` collection in the playbook's `collections`,
 like so:
 
