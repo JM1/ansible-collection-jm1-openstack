@@ -33,7 +33,7 @@ cloud_config:
     ephemeral: 0
     extra_specs: {}
     flavorid: auto
-    is_public: yes
+    is_public: true
     name: 'm1.tiny'
     projects:
     - name: 'admin'
@@ -55,11 +55,11 @@ cloud_config:
     properties:
       cpu_arch: x86_64
       hw_disk_bus: virtio
-      hw_qemu_guest_agent: 'yes'
+      hw_qemu_guest_agent: 'true'
       hw_video_model: qxl
       hw_vif_model: virtio
       os_distro: debian
-      os_require_quiesce: 'yes'
+      os_require_quiesce: 'true'
       os_version: 11
     state: present
     uri: https://cdimage.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-amd64.raw
@@ -136,7 +136,7 @@ ansible-inventory] as such:
 ```yml
 cloud_config:
 - openstack.cloud.volume:
-    bootable: yes
+    bootable: true
     display_name: '{{ inventory_hostname }}'
     image: 'debian-11-genericcloud-amd64'
     size: 20
@@ -246,7 +246,7 @@ jm1-openstack-requirements].
 
 | Name           | Default value | Required | Description |
 | -------------- | ------------- | -------- | ----------- |
-| `cloud_config` | `[]`          | no       | List of tasks to run [^example-modules] [^supported-keywords] [^supported-modules] |
+| `cloud_config` | `[]`          | false    | List of tasks to run [^example-modules] [^supported-keywords] [^supported-modules] |
 
 [^supported-modules]: Tasks will be executed with [`jm1.ansible.execute_module`][jm1-ansible-execute-module] which
 supports modules and action plugins only. Some Ansible modules such as [`ansible.builtin.meta`][ansible-builtin-meta]
@@ -294,7 +294,7 @@ First, provide [OpenStack auth information for OpenStack SDK][openstacksdk-confi
         ephemeral: 0
         extra_specs: {}
         flavorid: auto
-        is_public: yes
+        is_public: true
         name: 'm1.tiny'
         projects:
         - name: 'admin'
@@ -309,11 +309,11 @@ First, provide [OpenStack auth information for OpenStack SDK][openstacksdk-confi
         properties:
           cpu_arch: x86_64
           hw_disk_bus: virtio
-          hw_qemu_guest_agent: 'yes'
+          hw_qemu_guest_agent: 'true'
           hw_video_model: qxl
           hw_vif_model: virtio
           os_distro: debian
-          os_require_quiesce: 'yes'
+          os_require_quiesce: 'true'
           os_version: 11
         state: present
         uri: https://cdimage.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-amd64.raw
@@ -348,7 +348,7 @@ First, provide [OpenStack auth information for OpenStack SDK][openstacksdk-confi
         action: stop
         server: '{{ inventory_hostname }}'
     - openstack.cloud.volume:
-        bootable: yes
+        bootable: true
         display_name: '{{ inventory_hostname }}'
         image: 'debian-11-genericcloud-amd64'
         size: 20

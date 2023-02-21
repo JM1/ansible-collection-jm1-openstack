@@ -52,7 +52,7 @@ options:
         type: str
 
 notes:
-    - "Option I(wait) must be set to C(yes) for the module to return the value of the floating IP address."
+    - "Option I(wait) must be set to C(true) for the module to return the value of the floating IP address."
 
 extends_documentation_fragment:
   - openstack.cloud.openstack
