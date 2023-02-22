@@ -18,8 +18,7 @@ It allows to
 and much more with variable `cloud_config`.
 
 Role variable `cloud_config` defines a list of tasks which will be run by this role. Each task calls an Ansible module
-similar to tasks in roles or playbooks except that only few [keywords][playbooks-keywords] such as `register` and `when`
-are supported.
+similar to tasks in roles or playbooks except that only few [keywords][playbooks-keywords] such as `when` are supported.
 
 For example, to add a flavor with name `m1.tiny`, 1 VCPU, 512MB RAM and a 1GB Disk to [OpenStack project `admin`][
 openstack-ops-guide-projects-users], first define variable `cloud_config` with [`openstack.cloud.compute_flavor`][
@@ -256,7 +255,7 @@ modules and thus cannot be called from `jm1.ansible.execute_module`. Doing so ca
 for arbitrary modules, so for example, change from `- debug: msg=""` to `- debug: { msg: "" }`.
 
 [^supported-keywords]: Tasks will be executed with [`jm1.ansible.execute_module`][jm1-ansible-execute-module] which
-supports keywords `register` and `when` only.
+supports keyword `when` only.
 
 [^example-modules]: Useful Ansible modules in this context could be modules such as [`openstack.cloud.server`][
 openstack-cloud-server] and other modules from Ansible collection [`openstack.cloud`][galaxy-openstack-cloud].
