@@ -19,11 +19,11 @@ DOCUMENTATION = r'''
 
 module: image_import
 
-short_description: Import images into OpenStack image repository.
+short_description: Download image and import it to OpenStack's Glance service.
 
 description:
-    - "This module allows one to import images into the OpenStack image repository.
-       It is based on Ansible module openstack.cloud.image module from Hewlett-Packard Development Company, L.P. et al."
+    - "This module downloads an image and imports it to OpenStack's Glance service."
+    - "It is based on Ansible module M(openstack.cloud.image)."
 
 requirements:
    - backports.tempfile (python 2 only)
