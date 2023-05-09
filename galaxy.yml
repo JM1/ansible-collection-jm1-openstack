@@ -16,4 +16,4 @@ namespace: jm1
 readme: README.md
 repository: https://github.com/jm1/ansible-collection-jm1-openstack
 tags: null
-version: 2023.2.22
+version: 2023.5.9

@@ -95,7 +95,7 @@ You can also include it in a `requirements.yml` file and install it via
 ---
 collections:
   - name: jm1.openstack
-    version: 2023.2.22
+    version: 2023.5.9
 ```
 
 ## Usage and Playbooks
