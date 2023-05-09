@@ -136,7 +136,8 @@ def get_network(name_or_id,
 
     networks = cloud.search_networks(
         name_or_id=name_or_id,
-        filters=({'tenant_id': project_id} if project_id else None))
+        filters=({'project_id': project_id}
+                 if project_id else None))
 
     if not networks or len(networks) > 1:
         raise ValueError('Network %s is invalid or ambiguous' % name_or_id)
@@ -157,7 +158,8 @@ def allocate(floating_ip_address,
 
     network = get_network(floating_network_name, project.id, module, sdk, cloud)
 
-    fip_filters = {'network': network.id, 'tenant_id': project.id}
+    fip_filters = {'network': network.id,
+                   'project_id': project.id}
 
     if floating_ip_address:
         fip_filters['floating_ip_address'] = floating_ip_address
@@ -171,7 +173,7 @@ def allocate(floating_ip_address,
     fip = cloud.network.create_ip(
         floating_ip_address=floating_ip_address,
         floating_network_id=network.id,
-        tenant_id=project.id,
+        project_id=project.id,
         timeout=timeout,
         wait=wait)
 
@@ -194,7 +196,7 @@ def release(floating_ip_address,
     fips = cloud.search_floating_ips(filters={
         'floating_ip_address': floating_ip_address,
         'network': network.id,
-        'tenant_id': project.id
+        'project_id': project.id
     })
 
     if not fips:
