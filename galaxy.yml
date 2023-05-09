@@ -4,7 +4,7 @@ authors:
 dependencies:
   "jm1.ansible": '>=2022.10.23'
   "jm1.pkg": '>=2022.12.10'
-  "openstack.cloud": '>=1.9.1,<2.0.0'
+  "openstack.cloud": '>=1.9.1'
 description: null
 documentation: https://github.com/jm1/ansible-collection-jm1-openstack/tree/master/docs
 homepage: https://github.com/jm1/ansible-collection-jm1-openstack
