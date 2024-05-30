@@ -2,8 +2,8 @@
 authors:
   - Jakob Meng (https://github.com/jm1)
 dependencies:
-  "jm1.ansible": '>=2022.10.23'
-  "jm1.pkg": '>=2022.12.10'
+  "jm1.ansible": '>=2024.5.30'
+  "jm1.pkg": '>=2024.5.30'
   "openstack.cloud": '>=1.9.1'
 description: null
 documentation: https://github.com/jm1/ansible-collection-jm1-openstack/tree/master/docs
@@ -16,4 +16,4 @@ namespace: jm1
 readme: README.md
 repository: https://github.com/jm1/ansible-collection-jm1-openstack
 tags: null
-version: 2023.5.9
+version: 2024.5.30
